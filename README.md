@@ -51,3 +51,7 @@ Tudo que não for padrão na instalação do LAMP será exemplificado aqui.
 
 [Como instalar o Composer!](https://getcomposer.org/doc/00-intro.md)
 
+
+```bash
+ composer install
+ ```
