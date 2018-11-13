@@ -151,8 +151,7 @@ echo "\$databases['default']['default'] = array (
   'port' => '3306',
   'namespace' => 'Drupal\\Core\\Database\\Driver\\mysql',
   'driver' => 'mysql',
-);
-\$config_directories['sync'] = 'profiles/contrib/contenta_jsonapi/config/sync';" >> ../web/sites/default/settings.local.php
+);" >> ../web/sites/default/settings.local.php
 
 echo 'Instalando dependencias do composer.'
 echo  'Importando o banco'
