@@ -1,0 +1,203 @@
+{
+	"info": {
+		"_postman_id": "60d1d034-8199-4c49-976f-ecd3b9b90057",
+		"name": "Contenta",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "AUTHENTICATION",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "grant_type",
+							"value": "password",
+							"type": "text"
+						},
+						{
+							"key": "client_id",
+							"value": "cae7b266-df47-42f2-9268-aa2b96b08ce5",
+							"type": "text"
+						},
+						{
+							"key": "client_secret",
+							"value": "123123",
+							"type": "text"
+						},
+						{
+							"key": "username",
+							"value": "admin",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "admin",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "contenta.local/oauth/token",
+					"host": [
+						"contenta",
+						"local"
+					],
+					"path": [
+						"oauth",
+						"token"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Collection",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": ""
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Collection Filter + Relationship + Sparse fileds",
+			"request": {
+				"auth": {
+					"type": "oauth2",
+					"oauth2": [
+						{
+							"key": "accessToken",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6IjkxMzYwNjFiZTI0NzMwZWE5NWYwOTdjMTdlNDFmMTJkYTNlMWNjZGFjOWIyNWIyM2I5NjI2N2IxZDI0OWZkMDJkMWUxZTI4NzM1ZWNkNzBmIn0.eyJhdWQiOiJjYWU3YjI2Ni1kZjQ3LTQyZjItOTI2OC1hYTJiOTZiMDhjZTUiLCJqdGkiOiI5MTM2MDYxYmUyNDczMGVhOTVmMDk3YzE3ZTQxZjEyZGEzZTFjY2RhYzliMjViMjNiOTYyNjdiMWQyNDlmZDAyZDFlMWUyODczNWVjZDcwZiIsImlhdCI6MTU0MjEyNjIwNCwibmJmIjoxNTQyMTI2MjA0LCJleHAiOjE2MjIxMjI2MTMsInN1YiI6IjEiLCJzY29wZXMiOlsiYXV0aGVudGljYXRlZCIsImNsaWVudF9wb3N0bWFuIl19.YZLJmVsB2wA1BfGdCgKxxKaIWq4fq6cNv81c64GSKyjvec04zcwTwavh79OOO-EOt6q5jUJ-Kb9YCFRVlbOLaPvelKPqLcj1hdod1_2cyIGWBLtncVoxLm2RSyQzDzRrVP6LVdD9SHR8CnrRs0nWkL5pXXI90PADfX_CUCadooupCOmBf8Qwzez7m6HUJzie1VzUxmBv7YGObms1ovkRjW8Y97f43eBgefU4VkroJW_Lzktz-8k1dxcKx-oX8BM7MzxhL0kiR0snpbJjg-2VZw610h9FZKVEXjZGVQgbrG49qGZydJUyeKwTnI1GLnN87rsM0r-0UR3Jq1ahmmOHoAXJfC0WClo2tv8Ue3AIUPEiOoaC46yxZdTZILz_LLE7f4xhsaWqbNO6MaMNQgOcH-OH_CdB0UNPROZ2jbtTRsLZ1ibcVd4fooO-o8tHW39cpxFKLScF9WKGoh8wK4SiHgLgOlh2bIs30QKv6FwZuE8O84tNIOUKa2_ZWr9TGQoM6eN3LPnBpjdpUiiTM6yfQA_VLAtQetLO_3wkI4z-WWkHZTewg-72YstsczIGjl_aT9NUIQY80M3BMb0iCpVS00UuhFxXhXZNcA7LIFwL12I8kQ9o_EHn_usQNe3liTR6r9VxSlvyq1GpHIiwK3LdjiqCCSNxs9qzxflXJbIeUWw",
+							"type": "string"
+						},
+						{
+							"key": "addTokenTo",
+							"value": "header",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://contenta.local/api/node/negociacao?_format=json&page[limit]=1&filter[authorFilter][condition][path]=uid.name&filter[authorFilter][condition][value]=admin",
+					"protocol": "http",
+					"host": [
+						"contenta",
+						"local"
+					],
+					"path": [
+						"api",
+						"node",
+						"negociacao"
+					],
+					"query": [
+						{
+							"key": "_format",
+							"value": "json"
+						},
+						{
+							"key": "page[limit]",
+							"value": "1"
+						},
+						{
+							"key": "filter[titleFilter][condition][path]",
+							"value": "title",
+							"disabled": true
+						},
+						{
+							"key": "filter[titleFilter][condition][value]",
+							"value": "Gibimba",
+							"disabled": true
+						},
+						{
+							"key": "fields[node--negociacao]",
+							"value": "title,uid,nid,volume",
+							"disabled": true
+						},
+						{
+							"key": "include",
+							"value": "uid",
+							"disabled": true
+						},
+						{
+							"key": "fields[user--user]",
+							"value": "name",
+							"disabled": true
+						},
+						{
+							"key": "filter[authorFilter][condition][path]",
+							"value": "uid.name"
+						},
+						{
+							"key": "filter[authorFilter][condition][value]",
+							"value": "admin"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST Negociacao",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6IjRiMGEyMThiYzkyM2E4MzQ2ODFlMDU5ZjNjNjJlYmE3MDQ5M2Y3YmJhYzA2YzVjNDg5NGM5NzE2NjFiMjBkOTE1ZGVlN2MxZmQwOGMxY2ZiIn0.eyJhdWQiOiJjYWU3YjI2Ni1kZjQ3LTQyZjItOTI2OC1hYTJiOTZiMDhjZTUiLCJqdGkiOiI0YjBhMjE4YmM5MjNhODM0NjgxZTA1OWYzYzYyZWJhNzA0OTNmN2JiYWMwNmM1YzQ4OTRjOTcxNjYxYjIwZDkxNWRlZTdjMWZkMDhjMWNmYiIsImlhdCI6MTU0MjA1NTAzOSwibmJmIjoxNTQyMDU1MDM5LCJleHAiOjE2MjIwNTE0NDgsInN1YiI6IjEiLCJzY29wZXMiOlsiYXV0aGVudGljYXRlZCIsImNsaWVudF9wb3N0bWFuIl19.ks58O5sBjBF9yMQsrmxa1cKBtGaALMiFhQWkiVtl18OSn1xOJ9Xyz7xi9kqc1UAUn6RSS_92wKoWCJgiIf8iWWrRexRSkRe-QhUi6JqyqKMPQV0sKe5aL7tqDJFeo02sBJAVR_zgsp1W3TPrwl7SWOi4P_k_nWnT84WdlHE17FTUCJYE_s_cSBFcNC2CG_e7azl7cQK9hEgiVMaOcSWJwvSzzCsRSNRCkVLUMLtE7PBhEIGIr5gNntwelnyBXgcKAUQRjYMfRBDCcsk-s9gO-E9bgZrkmznTM0ge7TzAeoj0nTdIEiiOsWSOyU7UXPjLnM-eM3mFcK_5rFeNtY3qqrTPv8JOSynFQf2YebUWKzrBc4PT9ohiyugBe-MccdSJ0jiAIJCK3c33Z59ykadcRPu9jRu-zg-knX8GGPpCTshUp4Xjy2ybd2ZpEO0XVETBqmwIfKvN16WeX1llCq3lJf9uDD0LCAR3ylpPnjkI2wxhJd2v6-SDpMmeIX3X7c9ezxz1o7FQOBC4YVYfX3wv4Hs3kUXPjVtJI6YIEbjj8H7sEm7BnTFijrPzryP-Ys6Gbf7bXK4QL5PnHG9o_CLT1IoaWBW3jYS-1iK3GDCS3XLGAJHmJt3K-ZHKqvx9cq7Vn4ZFvMiFFcFdTpRM8NXqln5frkQnaVPEzOBv0M6hMk8",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "_format",
+						"value": "json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"data\":\n    {\n      \"type\": \"node--negociacao\",\n      \"attributes\": {\n        \n        \"status\": true,\n        \"title\": \"Gibimba\",\n        \"promote\": false,\n        \"sticky\": false,\n        \"revision_translation_affected\": true,\n        \"path\": {\n          \"alias\": null,\n          \"pid\": null,\n          \"langcode\": \"en\"\n        },\n        \"quantidade\": 8000,\n        \"valor\": 1245,\n        \"volume\": 535\n      }\n    }\n}"
+				},
+				"url": {
+					"raw": "http://contenta.local/api/node/negociacao",
+					"protocol": "http",
+					"host": [
+						"contenta",
+						"local"
+					],
+					"path": [
+						"api",
+						"node",
+						"negociacao"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
