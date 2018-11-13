@@ -1,11 +1,58 @@
 #!/usr/bin/env bash
 
-echo Insira a senha do usuário root
-echo Permissões ao diretório atualizadas
-chmod 777 -Rf ../
+echo "                                                                                "
+echo "                                                                                "
+echo " ##:  :##    :##:     ######"
+echo " ##    ##     ##      ######"
+echo " :##  ##:    ####       ##"
+echo " :##  ##:    ####       ##"
+echo "  ## .##    :#  #:      ##"
+echo "  ##::##     #::#       ##"
+echo "  ##::##    ##  ##      ##"
+echo "  :####:    ######      ##"
+echo "  .####.   .######.     ##"
+echo "   ####    :##  ##:     ##"
+echo "   ####    ###  ###   ######"
+echo "    ##     ##:  :##   ######"
+echo "                                                                                "
+echo "                                                                                "
+echo "                                                                                "
+echo "                              ##################################################"
+echo "                                                                                "
+echo "                                                                                "
+echo "                                                                                "
+echo "   :####:   .####.   ###  ###  ########    :####:    :##:    ######:      ##"
+echo "   ######   ######   ###  ###  ########    ######     ##     #######      ##"
+echo " :##:  .#  :##  ##:  ###::###  ##        :##:  .#    ####    ##   :##     ##"
+echo " ##        ##:  :##  ###  ###  ##        ##          ####    ##    ##     ##"
+echo " ##.       ##    ##  ## ## ##  ##        ##.        :#  #:   ##   :##     ##"
+echo " ##        ##    ##  ##:##:##  #######   ##          #::#    #######:     ##"
+echo " ##        ##    ##  ##.##.##  #######   ##         ##  ##   ######       ##"
+echo " ##.       ##    ##  ## ## ##  ##        ##.        ######   ##   ##.     ##"
+echo " ##        ##:  :##  ##    ##  ##        ##        .######.  ##   ##"
+echo " :##:  .#  :##  ##:  ##    ##  ##        :##:  .#  :##  ##:  ##   :##"
+echo "   ######   ######   ##    ##  ########    ######  ###  ###  ##    ##:    ##"
+echo "   :####:   .####.   ##    ##  ########    :####:  ##:  :##  ##    ###    ##"
+echo "                                              :"
+echo "                                             .#"
+echo "                                            ##"
+echo "                                                                                "
+echo ""
+
+function erroMysql() {
+    if [[ "$RESULT" -eq 1 ]]
+    then
+        echo "Algo deu errado durante a importação de sua base. Verifique se as informações passadas estão corretas e tente novamente!"
+        exit 1
+    fi
+}
+
+
+echo ""
+echo Dando permissões ao diretório. Insira sua senha.
+sudo chmod 777 -Rf ../
 
 COMPOSER_DIR="$(which composer)"
-#CURL_DIR="$(which curl)"
 WGET_DIR="$(which wget)"
 PHP_DIR="$(which wget)"
 MYSQL_DIR="$(which wget)"
@@ -69,17 +116,29 @@ echo ""
 read -sp "Password: " passvar
 echo ""
 
+if [[ -z $dbnamevar || -z $hostvar || -z $passvar || -z $uservar ]]
+then
+    echo "Você precisa preencher as informações de acesso ao MySQL"
+    exit 1
+fi
+
 echo "Dropando banco com nome ${dbnamevar}"
 echo ""
 mysql -u$uservar -p$passvar -e "drop database ${dbnamevar}"
+RESULT=$?
+#erroMysql
 
 echo "Criando banco com nome ${dbnamevar}"
 echo ""
 mysql -u$uservar -p$passvar -e "create database ${dbnamevar}"
+RESULT=$?
+erroMysql
 
 echo  'Importando o banco'
 echo ""
 mysql -u$uservar -p$passvar $dbnamevar < ./contenta.sql
+RESULT=$?
+erroMysql
 
 echo  'Atualizando o arquivo settings.local.php'
 echo ""
@@ -93,10 +152,24 @@ echo "\$databases['default']['default'] = array (
   'namespace' => 'Drupal\\Core\\Database\\Driver\\mysql',
   'driver' => 'mysql',
 );
-\$config_directories['sync'] = 'profiles/contrib/contenta_jsonapi/config/sync';" >> /home/grecco/projects/php/contenta/web/sites/default/settings.local.php
+\$config_directories['sync'] = 'profiles/contrib/contenta_jsonapi/config/sync';" >> ../web/sites/default/settings.local.php
 
 echo 'Instalando dependencias do composer.'
 echo  'Importando o banco'
 echo ""
 cd ../
 composer install
+
+echo "                                        "
+echo " ########   .####.    ######      ##"
+echo " ########   ######    ######      ##"
+echo " ##        :##  ##:     ##        ##"
+echo " ##        ##:  :##     ##        ##"
+echo " ##        ##    ##     ##        ##"
+echo " #######   ##    ##     ##        ##"
+echo " #######   ##    ##     ##        ##"
+echo " ##        ##    ##     ##        ##"
+echo " ##        ##:  :##     ##"
+echo " ##        :##  ##:     ##"
+echo " ##         ######    ######      ##"
+echo " ##         .####.    ######      ##"
