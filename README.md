@@ -98,3 +98,4 @@ http://contenta.local/user/login
        User: admin
        Pass: admin
 
+@TODO AJUSTAR PERMISSOES DAS CHAVES DE AUTH

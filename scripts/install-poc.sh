@@ -50,7 +50,7 @@ function erroMysql() {
 
 echo ""
 echo Dando permissões ao diretório. Insira sua senha.
-sudo chmod 777 -Rf ../
+sudo chmod -Rf 777 ../
 
 COMPOSER_DIR="$(which composer)"
 WGET_DIR="$(which wget)"
