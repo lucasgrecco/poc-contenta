@@ -158,6 +158,18 @@ echo  'Importando o banco'
 echo ""
 cd ../
 composer install
+echo 'Ajustando permissão das chaves de acesso.'
+echo ""
+pwd
+sudo chmod 660 private.key
+sudo chmod 660 public.key
+RESULT=$?
+
+if [[ "$RESULT" -eq 1 ]]
+then
+    echo "Algo deu errado. Você precisa ajustar as permissões dos arquivo private.key e public.key para 660 ou 600"
+    exit 1
+fi
 
 echo "                                        "
 echo " ########   .####.    ######      ##"
